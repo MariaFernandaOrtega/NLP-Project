@@ -1,0 +1,132 @@
+---
+title: "Fake News Final Report"
+description: |
+  This project compares two machine learning models (Logistic Regression and Passive-agressive)to detect fake news in two languages: English and Spanish.
+author: 
+  - name: Maria Fernanda Ortega 
+    url: https://github.com/MariaFernandaOrtega/ML-Project
+  - name: Radwa Abdelsalam 
+date: "`r Sys.Date()`" 
+categories: 
+  - Natural Language Processing 
+creative_commons: CC BY
+repository_url: https://github.com/MariaFernandaOrtega/ML-Project
+output: 
+  distill::distill_article: 
+    self_contained: false
+
+bibliography: references.bib
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+
+# Load dependencies 
+library(reticulate) # For rendering Python code 
+```
+
+
+```{r fig1, eval = TRUE, echo = FALSE, out.width = '100%', fig.cap = ""}
+knitr::include_graphics("C:/Users/feror/Downloads/fake.jpg")
+```
+
+
+
+## Abstract 
+
+One of the main challenges in the digital era is the difficulty of evaluating the reliability of information sources. Fake news have been a central theme of this topic given its proliferation and detrimental effect on society. The proposed method in the project revolves around comparing two base line models and assessing the performance on fake news data set obtained from ”ISOT Fake News” database, which is made available by the University of Victoria, Canada. The motivation of the project is provide machine learning model that can be used as embedded baseline for fake news classification model for a user friendly interface offered to the citizen. 
+In addition to using English language dataset as an initial phase of the project for testing supervised machine learning algorithms, Logistic Regression and Passive Aggressive Classifier performance,  the project also used Spanish language fake news data set that was augmented by data web scrapped from Spanish news websites. The English and non-English language approach was used to compare the performance of both models. Across language results show lower performance level of Logistic Regression in comparison to Passive Aggressive Classifier. Performance metrics used to measure performance are Accuracy rate and F1 score in addition to confusion matrix and cross validation to ensure the absence of bias during the training and fitting phase.
+
+## Introduction / Background
+
+The growing significance of fake news topic is parallel with the rise of prominence of social media as a source of news for the public. The salience of addressing the issue of fake news lies in the susceptibility of human beings to become victims of fake news.  Fake news pertains a great impact due to the spread of dissemination and the dangers it poses. The inability to detect falsehood from truth endangers democracy and can be regarded as a stepping stone for authoritarian regimes to attain power [@mcintyre2021hidden]. Fake news can undermine authority or even swing elections results. According to [@de2021identifying], although fake news content detection is mainly the responsibility of the social media provider, improving the online information ecosystem also falls under the mandate of the digital policy makers, scientific community and management and society. 
+
+## Related Work 
+
+The search for solutions to stop this topic has motivated the development of software mechanisms capable of recognizing fake news. For instance, [@mahir2019detecting], proposed a model to identify forged news messages from Twitter posts by using machine learning classifiers. The research concluded that Support Vector Machine (SVM) and Naïve Bayes outperform the other algorithms studied (Logistic Regression and Recurrent Neural Network).  A different approach is followed by [@Detectio1]. They state that as the data gets enormously large, the algorithm at hand becomes less effective.  Therefore, for their research, the authors selected a model through implementing two highly efficient algorithms, Multinomial Naïve Bayes and Passive Aggressive Classifier. The accuracy of the model was 94.5 percent  using the Multinomial Naive Bayes method, and with the Passive Aggressive the accuracy increased further to 99.5 percent. In a more recent study, [@probierz2021rapid], argued that the detection of fake news can be effective based on title itself, without the need to analyze the entire text, which significantly reduces the time of decision-making.  Their model is based on a natural language processing (NLP) and machine learning algorithms for classification (Support Vector Machine, Classification and Regression Trees, the Boosting Method, the Bagging Approach, and the Random Forests). When analyzing the news titles, they conclude that the best results for all metrics used are obtained when the SVM algorithm is used (Accuracy 0.9419). 
+
+
+
+## Proposed Method 
+
+For the purpose of reducing causal collocation in a large corpus, tokenization method is adopted in the data pre-processing phase. Given the large amount of data, with particular regards to the text in the news, pattern detection by the algorithm would perform significantly higher with linguistic selection of important tokens.  Following breaking the data into substrings tokens, data cleaning method applied included removing stop-words for dimensionality reduction of word space [@vijayarani2015preprocessing]. All numeric data in the title and the text are removed as well. As a second step of dimensionality reduction, we applied stemming using corpus based stemmer to remove unnecessary variation of the same word reduce noise in the data. The final stage of pre-processing applied is Term Frequency-Inverse Document Frequency (TF-IDF) for feature extraction [@gupta2021fake]. Through counting the token’s frequency and assigning weights in an inverse manner to pinpoint the key identifying tokens. The TF-IDF vectorization is performed in the same pipeline of the algorithms for both datasets.
+
+
+
+```{r fig2, eval = TRUE, echo = FALSE, out.width = '70%', fig.cap = "Pre-Processing Diagram", fig.align = 'center'}
+knitr::include_graphics("C:/Users/feror/Downloads/DATA (2).png")
+```
+The project’s main pillar methodological approach is classification, thus the models used are from the supervised machine learning algorithm branch. Two classification algorithms, Logistic Regression (LR) and Passive Aggressive Classifier (PAC), are implemented as methods for fake news detection. 
+
+## Experiments 
+
+**Data**: To evaluate the effectiveness of the selected machine learning algorithms, this project uses the "ISOT Fake News Dataset."The data was collected from real world sources and contains more than 12,600 truthful articles from Reuters.com (news website) and more than 12,600 articles from different fake news outlet resources (sites were flagged as unreliable by Politifact.com). The dataset is approximately balanced between fake (52.3\%) and real (47.7\%).  Each article contains the following information: article title, text, type, and the date the article was published on. The dataset contains different types of news, most focused on political and global issues.
+
+
+For the second part of the project, we analysed a database of fake and real news in Spanish.  The information was collected from two sources. First, we used the database shared by the Secretariat of Higher Education, Science, Technology and Innovation of the government of Ecuador, which contains 538 news articles from 2019, of which 57\% are legitimate news from reputable newspapers and 43\% are fake news coming from websites reported for spreading fake news in Ecuador (the government does not specify the names of these websites nor the newspapers). Each article contains the following information: article text, news type (legit/fake), and the date the article was published on. In order to make our news source more diverse and complex, 104 articles from reliable online newspapers (Milenio and Aristegui Noticias) were added to this database. Thus, the final Spanish database has 35\% fake news and 65\% real news. 
+
+Furthermore, Figure 3 and figure 4 illustrate an overview of tokens' frequency in terms of fake news for the English and Spanish database . The main aspect that can be concluded from these charts is that the terms distribution in both groups remains in a similar proportion. In each case, two tokens appear very frequently, and the others remain at a similar level. 
+
+
+```{r fig3, eval = TRUE, echo = FALSE, out.width = '70%', fig.cap = "Tokens frequency -fake news (English)",fig.align = 'center'}
+knitr::include_graphics("C:/Users/feror/Downloads/fake2 (1).png")
+```
+```{r fig4, eval = TRUE, echo = FALSE, out.width = '60%', fig.cap = "Tokens frequency -fake news (Spanish)",fig.align = 'center'}
+knitr::include_graphics("C:/Users/feror/Downloads/s_1 (1).png")
+```
+**Software**: For this project, Python was used as the programming language. Specifically,  Pandas, Numpy and Matplotlib libraries were used for data pre-processing and visualisation. The Natural Language Toolkit (NLTK) was used for text tokenisation, "stop word" removal and stemming process. Finally, the Scikit-learn library was utilized to train and test the models.  
+
+**Evaluation method**: The quality of the selected models, LR and PAC,  will be assessed based on the results of the confusion matrix, the Accuracy Rate and the F1 Score as aforementioned. These metrics have been chosen due to their widespread use in evaluating the performance of NLP models and, specifically, fake news models [@mhatre2021hybrid].
+
+**Experimental details**: For this project, two experiments have been carried out. The first one analyses the database with news in English and compares the results of the evaluation metrics on the title and the text of the news. Furthermore, the dataset was divided into training data (70\%) and test data (30\%). The selected models were set with default parameters.
+
+For the second experiment, a new database with news in Spanish was selected to evaluate the quality of the models, Logistic Regression and Passive Aggressive, in detecting fake news using the text of the news, and compare it with the results obtained in the first experiment. In this case, the training data is 80\% and the test data is 20\%. First, the selected classifiers were set with the default parameters, and then a hyper-parameter tuning was performed for the model that obtained the lowest result (Logistic Regression).
+
+**Results Experiment 1**: 
+The results related to this experiment can be divided into two levels of evaluation: data analysis time and classification quality in predicting fake news. 
+
+```{r fig5, eval = TRUE, echo = FALSE, out.width = '90%', fig.cap = "",fig.align = 'center'}
+knitr::include_graphics("C:/Users/feror/Downloads/table1.png")
+```
+
+```{r fig6, eval = TRUE, echo = FALSE, out.width = '50%', fig.cap = "",fig.align = 'center'}
+knitr::include_graphics("C:/Users/feror/Downloads/table2.png")
+```
+ 
+**Comment on quantitative results (Experiment 1) **: The objective of this experiment was to compare the quality of machine learning models to quickly detect fake news from two perspectives, the news title and the entire text news. One of the initial hypotheses of the work was that when comparing logistic regression and passive-aggressive models there would be a significant difference in the evaluation metrics, since, as explained in the methodology section, the existing literature shows a preference towards the use of the passive-aggressive classifier when analyzing news datasets. However, Table 2 shows that this assumption proved to be false with the analyzed database. Furthermore, we did not expect both models  to obtain such high results in the f1 score and accuracy rate when analysing title and text, the classification quality assessment values were higher than 0.94 when analysing text and title. This can be explained by the methodology used in constructing the ISOT Fake News database. First of all, there is no variety of the news sources. The real news were collected only from Reuters.com and the fake news, even though they were selected from different websites, all were flagged by Politifact (a fact-checking organization in the USA).Also, the database was previously cleaned and processed by the University of Victoria, making it easier to use it and to implement the models. 
+
+Another hypothesis that was raised at the beginning of the research was that the quality of the classification algorithms would be significantly higher when analysing text as opposed to news titles, since most of the papers focused on detecting fake news take the content of the articles as the analysis variable. In this study, the accuracy rate and F1 score values are higher when using the text in both models, however, when focusing on the title, the results of these metrics decrease by less than 5\% (table 2).Thus, it is concluded that for this analysis, the title is a good indicator of fake news.
+
+**Results Experiment 2**: 
+Table 3 provides an overview of the quantitative performance of the models in predicting fake news in Spanish. In this experiment, the passive-aggressive algorithm outperformed the logistic regression model with a F1-score of 92\% and an Accuracy rate of 95\%.
+
+```{r fig7, eval = TRUE, echo = FALSE, out.width = '50%', fig.cap = "",fig.align = 'center'}
+knitr::include_graphics("C:/Users/feror/Downloads/table3.png")
+```
+
+Furthermore, table 4 shows a comparison of the F1 Score between the articles in English  (first experiment) and the news in Spanish. The results are significantly better when implementing the models on the English database. 
+
+```{r fig8, eval = TRUE, echo = FALSE, out.width = '70%', fig.cap = "",fig.align = 'center'}
+knitr::include_graphics("C:/Users/feror/Downloads/table4.png")
+```
+
+**Comment on quantitative results (Experiment 2) **:
+The objective of this experiment was to compare the quality of machine learning models (Passive Aggressive and Logistic Regression) to detect fake news with non-English text. The first hypothesis for this phase was that we would observe a decrease in the Accuracy rate and F1 Score for both models because, unlike the English database, in this experiment the news come from different sources and cover different topics. Furthermore, we added 104 true and recent articles to try to simulate a scenario more similar to the real world, where there is no uniform division of true and false news. From table 4 we conclude that this hypothesis was true.
+
+The second assumption made was that the passive-aggressive classifier would outperform the logistic regression model, since the existing literature shows a preference for using this classifier for fake news prediction. In table 3 we can observe that even after optimising the hyper-parameters for the logistic regression model, the passive-aggressive algorithm does a better job in categorising fake and true news. It should be noted, however, that a weakness of the second database (news in Spanish) is that it does not contain such a large number of articles, so it is very likely that if the number is increased, this hypothesis would no longer hold true and other machine learning models would need to be tested. 
+
+## Analysis 
+
+Although the Passive Aggressive model has a high level of performance with Spanish language text, the reliability of the model can be attested.  The word frequency during the tokenization process, presented in figure 5, are not indicative of the specific tokens that can be attached to the fake news corpus. Tokens such as 'Si', 'ser' and 'miss', the first meaning 'yes' in English and the following two having almost the identical meaning in English do not provide a clear analytical picture of the political nature of frequent words that might be classified as fake news. Moreover, the the frequency variation across the tokens are significantly less that its English counterpart.  One argument can be the internal validity of the dataset in terms of temporal or context specific nature of the news or the reporting language that is predominant in the Spanish fake news domain.
+[@vivas2020cross] argue that the semantic features across the Spanish and the English language have insignificant difference. Based on such a claim, languages that are alphabetic might exhibit similar range of results in terms of models' performance. This argument can be viewed as either complementary or contradictory to the technical argument that derives the analysis of model performance solely based on the structure of the dataset in terms of balance between the classes for example. Accordingly, three dimensions should be taken into account in order to make a comprehensive assessment of model performance across language. These dimension include the linguistic dimension, the dataset structure and context specificity of the data to argue for the external validity of the findings of cross-language fake news classification of machine learning model performance. 
+
+
+## Conclusion(s)
+
+Logistic Regression and Passive Aggressive models show high level of performance on text and title English dataset. The models' performance is higher for the text in comparison to the title dataset. The balance of the data, in terms of true and fake, plays an important role in the performance of the models in terms of both accuracy and F1-score. Applying the two models on non-English language dataset showed lower performance for both models, albeit observable lower value for logistic regression. Thus, it can be argued that logistic regression has limitations when applied to non-English language dataset. On the other hand, given that the dataset structure has a lower balance ratio between fake and true data, the model training might have been affecting by such aspect.   
+
+The greater the number of the sample used in research the more critical insight on the performance of models on non-English dataset would be more evident. There is a debate in the literature on whether non-English language should be translated into English prior to implementing the model or using the native language directly into the models as a best practice [@zervopoulos2022deep].   Future research can look into stylometric features to provide classification and improved the identification of fake news in terms of satire for example [@abonizio2020language].  Such a result can be research to link specific tokens its effect on public opinion.
+
+## Acknowledgments 
+
+We thank the University of Victoria and the Secretariat of Higher Education, Science, Technology and Innovation of Ecuador for providing the datasets we used to evaluate the performance of the models (Passive-aggressive and logistic regression) in differentiating fake from real news.
