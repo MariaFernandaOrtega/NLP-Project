@@ -1,5 +1,5 @@
 ---
-title: "Fake News Final Report"
+title: "Identifying fake news in two languages"
 description: |
   This project compares two machine learning models (Logistic Regression and Passive-agressive)to detect fake news in two languages: English and Spanish.
 author: 
