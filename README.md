@@ -17,14 +17,14 @@ The results related to this experiment can be divided into two levels of evaluat
 
 
 ## Results Experiment 2: 
-The table below provides an overview of the quantitative performance of the models in predicting fake news in Spanish. In this experiment, the passive-aggressive algorithm outperformed the logistic regression model with a F1-score of 92% and an Accuracy rate of 95%.
-
-<img width="493" alt="Screenshot 2023-03-31 111042" src="https://user-images.githubusercontent.com/112641687/229078803-2f7b6b7a-d1ab-49af-9d3f-497743439078.png">
-
-Furthermore, this next table shows a comparison of the F1 Score between the articles in English (first experiment) and the news in Spanish. The results are significantly better when implementing the models on the English database.
+Table 3 provides an overview of the quantitative performance of the models in predicting fake news in Spanish. In this experiment, the passive-aggressive algorithm outperformed the logistic regression model with a F1-score of 92% and an Accuracy rate of 95%.
 
 
+<img width="281" alt="Screenshot 2023-03-31 111316" src="https://user-images.githubusercontent.com/112641687/229079475-d68394b8-89dd-4c0d-bffe-77a3a00ffebe.png">
 
-<img width="493" alt="Screenshot 2023-03-31 111042" src="https://user-images.githubusercontent.com/112641687/229079164-d9e1faef-522f-4d2f-9cdf-f833dbb8179a.png">
+Furthermore, table 4 shows a comparison of the F1 Score between the articles in English (first experiment) and the news in Spanish. The results are significantly better when implementing the models on the English database.
+
+
+<img width="392" alt="Screenshot 2023-03-31 111421" src="https://user-images.githubusercontent.com/112641687/229079516-ff2df2d6-0d5f-4e11-bd4b-652a64cf6610.png">
 
 
