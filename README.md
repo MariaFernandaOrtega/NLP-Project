@@ -10,5 +10,21 @@ One of the main challenges of the digital era is the difficulty of assessing the
 For this project, two experiments have been carried out. The first one analyses the database with news in English and compares the results of the evaluation metrics on the title and the text of the news. Furthermore, the dataset was divided into training data (70%) and test data (30%). The selected models were set with default parameters.
 For the second experiment, a new database with news in Spanish was selected to evaluate the quality of the models, Logistic Regression and Passive Aggressive, in detecting fake news using the text of the news, and compare it with the results obtained in the first experiment. In this case, the training data is 80% and the test data is 20%. First, the selected classifiers were set with the default parameters, and then a hyper-parameter tuning was performed for the model that obtained the lowest result (Logistic Regression).
 
-Results Experiment 1: The results related to this experiment can be divided into two levels of evaluation: data analysis time and classification quality in predicting fake news.
+## Results Experiment 1: 
+The results related to this experiment can be divided into two levels of evaluation: data analysis time and classification quality in predicting fake news.
+
 <img width="493" alt="Screenshot 2023-03-31 111042" src="https://user-images.githubusercontent.com/112641687/229078221-0887ec3c-cb4b-4d9f-b7c9-3b8130fc054d.png">
+
+
+## Results Experiment 2: 
+The table below provides an overview of the quantitative performance of the models in predicting fake news in Spanish. In this experiment, the passive-aggressive algorithm outperformed the logistic regression model with a F1-score of 92% and an Accuracy rate of 95%.
+
+<img width="493" alt="Screenshot 2023-03-31 111042" src="https://user-images.githubusercontent.com/112641687/229078803-2f7b6b7a-d1ab-49af-9d3f-497743439078.png">
+
+Furthermore, this next table shows a comparison of the F1 Score between the articles in English (first experiment) and the news in Spanish. The results are significantly better when implementing the models on the English database.
+
+
+
+<img width="493" alt="Screenshot 2023-03-31 111042" src="https://user-images.githubusercontent.com/112641687/229079164-d9e1faef-522f-4d2f-9cdf-f833dbb8179a.png">
+
+
