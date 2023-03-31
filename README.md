@@ -5,3 +5,7 @@ One of the main challenges of the digital era is the difficulty of assessing the
 
 ## Proposed Method
 <img width="487" alt="Screenshot 2023-03-30 165840" src="https://user-images.githubusercontent.com/112641687/228881981-4b7d56c3-f704-4362-b837-42c74c22ea91.png">
+
+## Experimental details: 
+For this project, two experiments have been carried out. The first one analyses the database with news in English and compares the results of the evaluation metrics on the title and the text of the news. Furthermore, the dataset was divided into training data (70%) and test data (30%). The selected models were set with default parameters.
+For the second experiment, a new database with news in Spanish was selected to evaluate the quality of the models, Logistic Regression and Passive Aggressive, in detecting fake news using the text of the news, and compare it with the results obtained in the first experiment. In this case, the training data is 80% and the test data is 20%. First, the selected classifiers were set with the default parameters, and then a hyper-parameter tuning was performed for the model that obtained the lowest result (Logistic Regression).
