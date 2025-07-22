@@ -27,4 +27,7 @@ Furthermore, table 4 shows a comparison of the F1 Score between the articles in 
 
 <img width="392" alt="Screenshot 2023-03-31 111421" src="https://user-images.githubusercontent.com/112641687/229079516-ff2df2d6-0d5f-4e11-bd4b-652a64cf6610.png">
 
+## Authors
 
+**Maria Fernanda Ortega Valencia**  
+**Radwa*
