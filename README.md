@@ -30,4 +30,4 @@ Furthermore, table 4 shows a comparison of the F1 Score between the articles in 
 ## Authors
 
 **Maria Fernanda Ortega Valencia**  
-**Radwa*
+**Radwa Abdelsalam**
